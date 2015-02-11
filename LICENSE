@@ -1,0 +1,5 @@
+
+tweetnacl.c and tweetnacl.h are from tweetnacl.cr.yp.to, which are published
+  without licenses.
+
+Our additions are building under the new BSD license (3 clause)
