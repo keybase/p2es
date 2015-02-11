@@ -59,7 +59,11 @@ void seckey_split(seckey_t client, seckey_t server, const seckey_t whole, const 
 	seckey_sub(client, whole, server);
 }
 
-void randombytes(u8 *v, u64 u) {}
+void randombytes(u8 *v, u64 u) {
+	// Crash the process.
+	int *i = NULL;
+	*i = 10;
+}
 
 int main() {
 	i64 x[64];
@@ -67,7 +71,7 @@ int main() {
 	for (i = 0; i < 64; i++) {
 		x[i] = 0;
 	}
-	x[1] = -1;
+	x[0] = -1;
 	u8 res[32];
 	modL(res, x);
 	for (i = 31; i >= 0; i--) {
