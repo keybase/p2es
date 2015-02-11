@@ -4,6 +4,8 @@ typedef u8 seed_t[32];
 typedef unsigned short i16;
 typedef i16 scratch_t[33];
 
+#include <stdio.h>
+
 // 16*L, which is slightly bigger than 2^256.
 static u8 L2[33] = { 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x4d, 0xef, 0x9d, 0xea, 0x2f, 0x79, 0xcd, 0x65, 0x81, 0x26, 0x31, 0xa5, 0xcf, 0x5d, 0x3e, 0xd0 };
 
@@ -55,4 +57,21 @@ void seckey_split(seckey_t client, seckey_t server, const seckey_t whole, const 
 	server[0 ] &= 248;
 	server[31] &= 31;
 	seckey_sub(client, whole, server);
+}
+
+void randombytes(u8 *v, u64 u) {}
+
+int main() {
+	i64 x[64];
+	int i;
+	for (i = 0; i < 64; i++) {
+		x[i] = 0;
+	}
+	x[1] = -1;
+	u8 res[32];
+	modL(res, x);
+	for (i = 31; i >= 0; i--) {
+		printf("%02x", res[i]);
+	}
+	printf("\n");
 }
